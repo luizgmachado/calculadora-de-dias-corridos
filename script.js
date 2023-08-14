@@ -18,7 +18,7 @@ function calculateBusinessDays() {
       // Adicione mais feriados se necessário
     ];
 
-    const dateString = date.toLocaleDateString('pt-BR').substr(0, 10);
+    const dateString = date.toLocaleDateString('pt-BR').slice(0, 10);
     return holidays.includes(dateString);
   }
 
@@ -50,6 +50,8 @@ function calculateBusinessDays() {
   const startDate = new Date(document.getElementById("startDate").value);
   const numDays = parseInt(document.getElementById("numDays").value);
   const resultElement = document.getElementById("result");
+  const finalResult = document.getElementById("finalResult");
+
 
   // Verificar se os inputs estão vazios
   if (!startDate || isNaN(numDays)) {
@@ -68,16 +70,24 @@ function calculateBusinessDays() {
     }
   }
 
-  // Verificar se resultDate é sábado (6) ou domingo (0) e pular para a próxima segunda-feira
-  if (currentDate.getDay() === 6 || currentDate.getDay() === 0) {
-    currentDate.setDate(currentDate.getDate() + (currentDate.getDay() === 6 ? 2 : 1));
-  }
-
   const resultDate = getNextBusinessDay(currentDate);
   const formattedResultDate = resultDate.toLocaleDateString('pt-BR').substr(0, 10);
   resultElement.textContent = `Data Final: ${formattedResultDate}`;
+
+  // Calcula o resultado com um dia a mais
+  const finalResultDate = getNextBusinessDay(resultDate);
+  finalResultDate.setDate(finalResultDate.getDate());
+  const formattedFinalResultDate = finalResultDate.toLocaleDateString('pt-BR').slice(0, 10);
+
+  const finalResultElement = document.getElementById("finalResult");
+  finalResultElement.textContent = `Transito em julgado: ${formattedFinalResultDate}`;
 
   // Limpar os inputs após calcular
   document.getElementById("startDate").value = '';
   document.getElementById("numDays").value = '';
 }
+
+  // // Verificar se resultDate é sábado (6) ou domingo (0) e pular para a próxima segunda-feira
+  // if (currentDate.getDay() === 6 || currentDate.getDay() === 0) {
+  //   currentDate.setDate(currentDate.getDate() + (currentDate.getDay() === 6 ? 2 : 1));
+  // }
