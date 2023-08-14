@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: #263658;
+
+}
+
+#app {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  place-content: center;
+	max-width: 40.0rem;
+	margin: 0 auto;
+	padding: 2rem;
+	border: 1px solid #ccc;
+	border-radius: 1rem;
+  background-color: rgb(214, 224, 255);
+
+}
+
+label {
+	display: block;
+	margin: 1.5rem 0 0;
+}
+
+input {
+	width: 100%;
+	padding: 1rem;
+  margin-top: .8rem;
+  border-radius: .5rem;
+
+}
+
+button {
+	background-color: #ff5900;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 10px;
+
+  font-weight: bold;
+  font-size: 16px;
+}
+button:hover {
+  background-color: #d24600;
+  transform: scale(1.03);
+}
+
+p {
+	margin-top: 20px;
+	font-weight: bold;
+}
